@@ -1,0 +1,31 @@
+    <%- include ('./partials/encabezado') %>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+               <div class="col-sm-5 col-md-6">
+                   <% if(mensaje.length > 0) {%>
+                       <h4>
+                           <span class='icon-info'></span>
+                           <%=mensaje%>
+                       </h4>
+                   <% } %>
+                   <h1>Inicio Asociado</h1>
+                    <form action='/procesar-inicio-asociados' method="POST">
+                            <div class="input-group vertical">
+                                   <label for = 'cedula'>Cedula    </label>
+                                   <input type='text' name='cedula' id='cedula'>
+                            </div>
+                            <div class="input-group vertical">
+                                   <label for = 'password'>Password</label>
+                                   <input type='password' name='password' id='password'>
+                            </div>
+                            <div class="col-sm-12">
+                                   <input class = 'Primary' type='submit' value='Continuar'>
+                            </div>
+                    </form>
+               </div>
+           </div>
+       </div>
+    </div>
+    
+    <%- include ('./partials/pie') %>

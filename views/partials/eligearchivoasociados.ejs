@@ -1,0 +1,12 @@
+<form id="selarchivo2" action='/seleccionaarchivo/2' method="POST" style="display: none;">
+    <label for="subearchivo" class="subir">Subir archivo de Asociados:</label>
+    <input id="subearchivo" type="file" name="file" style="display: none;" onchange="cambiar()">
+    <div id="info""></div>
+    <input type="submit" value="Cargar">
+</form>
+<script>
+    function cambiar(){
+        var nomarchivo = document.getElementById('subearchivo').files[0].name
+        document.getElementById('info').innerHTML = nomarchivo
+    }
+</script>

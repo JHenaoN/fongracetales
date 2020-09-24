@@ -1,0 +1,83 @@
+    <%- include ('./partials/encabezado3')%>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <% if(mensaje.length > 0) {%>
+                        <h4>
+                            <span class='icon-info'></span>
+                            <%=mensaje%>
+                        </h4>
+                    <%} %>
+                    <form action='/procesar-registro-asociados' method="POST">
+                       <fieldset>
+                            <legend>Nuevo Asociado</legend>
+                            <div class="row">
+                                 <div class="col-sm-4">
+                                    <!-- <label for = 'cedula'>Cedula</label> -->
+                                    <input type='number' name='cedula' id='cedula' placeholder="Cedula">
+                                
+                                    <!-- <label for = 'contrasena'>Password</label> -->
+                                    <input type='password' name='password' id='password' placeholder="Password">
+                                
+                                    <!-- <label for = 'nombre'>Nombres</label> -->
+                                    <input type='text' name='nombres' id='nombres' placeholder="Nombres">
+                                
+                                    <!-- <label for = 'apellido'>Apellidos</label> -->
+                                    <input type='text' name='apellidos' id='apellidos' placeholder="Apellidos">
+                                
+                                    <!-- <label for = 'email'>Email    </label> -->
+                                    <input type='email' name='email' id='email' placeholder="Email">
+                                    
+                                    <!-- <label for="">Estado</label> -->
+                                    <select name="estado" id="">
+                                        <option value="">Seleccione Estado</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Retirado">Retirado</option>
+                                    </select>
+
+                                    <input class = 'Primary' type='submit' value='Registrar'>
+                                </div>
+                            </div>    
+                       </fieldset> 
+                        
+                    </form>
+                    
+                </div>
+                <div class="col-sm-8">
+                   
+                   <div class="card fluid">
+                    <table class="hoverable scrollable">
+                        <!-- <caption>Asociados</caption>    -->
+                        <thead>
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Estado</th>
+                                <th>Email</th>
+                                <th>Accion</th>
+                            </tr>
+                           </thead>
+                           <tbody>
+                            <% asociados.map(socios =>{  %> 
+                                <tr>
+                                   <td data-label="Cedula"><%=socios.cedula%></td>
+                                   <td data-label="Nombres"><%=socios.nombres%></td>
+                                   <td data-label="Apellidos"><%=socios.apellidos%></td>
+                                   <td data-label="Estado"><%=socios.estado%></td>
+                                   <td data-label="Email"><%=socios.email%></td>
+                                   <td><a href="/Eliminar" class="button">Eliminar</a></td>
+                               </tr>
+                            <% })  %>
+                           </tbody>
+                       </table> 
+                   </div>
+
+                          
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%- include ('./partials/pie')%>

@@ -1,0 +1,45 @@
+/* html {
+    font-size: 14px;
+  }  */
+.registro-inicio{
+    float: right;
+    position: relative;
+    top: 20px;
+    right: 18px;
+  }
+  html,
+  body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+  }
+  header{
+    margin: 0px;
+    padding: 0px;
+    height: 18%;
+    width: 100%;
+  }
+  .seccion{
+    margin: 0px;
+    padding: 0px;
+    height: 75%;
+ }
+  .pie{
+    border-top: 2px solid #000;
+    height: 12%;
+    width: 100%;  
+    text-align: center;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+  }
+  .subir{
+    padding: 5px 10px;
+    background: #f55d3e;
+    color: #fff;
+    border: 0px solid #fff;
+  }
+  .subir:hover{
+    color: #fff;
+    background: #f7cb15;
+  }

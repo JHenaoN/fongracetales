@@ -1,0 +1,51 @@
+    <%- include ('./partials/encabezado3') %>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+               <div class="col-sm-5">
+                   <% if(mensaje.length > 0) {%>
+                       <h4>
+                           <span class='icon-info'></span>
+                           <%=mensaje%>
+                       </h4>
+                   <% } %>
+                   <h1>Consola Administracion</h1>
+                   <ul>
+                    <li><a href="/registro-admon"> Registro Manual de Administradores  </a></li>   
+                    <li><a href="/registro"> Registro Manual de Asociados  </a></li> 
+                    <li><a href="#" onclick="mostrar(1)"> Registro Masivo de Administradores  </a></li>
+                        <%- include ('./partials/eligearchivoadmon') %>
+                    </li> 
+                    <li><a href="#" onclick="mostrar(2)"> Registro Masivo de Asociados  </a></li>
+                        <%- include ('./partials/eligearchivoasociados') %>
+                    </li>
+                    <li><a href="#" onclick="mostrar(3)"> Registro Masivo de Saldos Ahorros  </a></li>
+                        <%- include ('./partials/eligearchivoasociados') %>
+                    </li>
+                    <li><a href="#" onclick="mostrar(4)"> Registro Masivo de Saldos Creditos </a></li>
+                        <%- include ('./partials/eligearchivoasociados') %>
+                    </li>
+                    <li><a href="#" onclick="mostrar(5)"> Registro Masivo de Descuentos Enviados  </a></li>
+                        <%- include ('./partials/eligearchivoasociados') %>
+                    </li>
+                    <li><a href="#" onclick="mostrar(6)"> Registro Masivo de Descuentos Aplicados  </a></li>
+                        <%- include ('./partials/eligearchivoasociados') %>
+                    </li>
+                   </ul> 
+                   
+                   
+                    
+               </div>
+               <div class="colsm-7">
+                
+               </div>
+           </div>
+       </div>
+    </div>
+    
+    <%- include ('./partials/pie') %>
+    <script>
+        function mostrar(item){
+            document.getElementById(`selarchivo${item}`).style.display = "block"
+        }
+    </script>

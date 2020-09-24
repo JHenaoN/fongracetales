@@ -1,0 +1,55 @@
+    <%- include ('./partials/encabezado3') %>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                   <% if(mensaje.length > 0) {%>
+                       <h4>
+                           <span class='icon-info'></span>
+                           <%=mensaje%>
+                       </h4>
+                   <% } %>
+                   <h1>Registro Administradores</h1>
+                    <form action='/procesar-registro-admon' method="POST">
+                            <div class="input-group vertical">
+                                   <label for = 'usuario'>Usuario</label>
+                                   <input type='text' name='usuario' id='usuario'>
+                            </div>
+                            <div class="input-group vertical">
+                                   <label for = 'password'>Password</label>
+                                   <input type='password' name='password' id='password'>
+                            </div>
+                            <div class="col-sm-12">
+                                   <input class = 'Primary' type='submit' value='Registrar'>
+                            </div>
+                    </form>
+                </div>
+                <div class="col-sm-8">
+                  <div class="card fluid">
+                    <table class="hoverable scrollable">
+                        <caption>Usuarios Administradores</caption>
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Password</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% administradores.map(administrador => {  %> 
+                                <tr>
+                                <td data-label="Usuario"><%=administrador.usuario%></td>
+                                <td data-label="Password"><%=administrador.password%></td>
+                                <td><a href="/Eliminar" class="button">Elim</a></td>
+                                </tr>
+                            <%  }) %>  
+                        </tbody>
+                    </table>       
+                  </div>
+                    
+                </div>
+           </div>
+       </div>
+    </div>
+    
+    <%- include ('./partials/pie') %>

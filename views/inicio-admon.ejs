@@ -1,0 +1,32 @@
+    <%- include ('./partials/encabezado') %>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+               <div class="col-sm-5">
+                   <% if(mensaje.length > 0) {%>
+                       <h4>
+                           <span class='icon-info'></span>
+                           <%=mensaje%>
+                       </h4>
+                   <% } %>
+                   <h1>Inicio Administrador</h1>
+                    <form action='/procesar-inicio-admon' method="POST">
+                            <div class="input-group vertical">
+                                   <label for = 'usuario'>Usuario</label>
+                                   <input type='text' name='usuario' id='usuario'>
+                            </div>
+                            <div class="input-group vertical">
+                                   <label for = 'password'>Password</label>
+                                   <input type='password' name='password' id='password'>
+                            </div>
+                            <div class="col-sm-12">
+                                   <input class = 'Primary' type='submit' value='Continuar'>
+                            </div>
+                    </form>
+               </div>
+               
+           </div>
+       </div>
+    </div>
+    
+    <%- include ('./partials/pie') %>
