@@ -1,0 +1,12 @@
+<form id="selarchivo<%=elemento%>" action='/seleccionaarchivo/<%=elemento%>' method="POST" style="display:none;" >
+    <label for="subearchivo<%=elemento%>" class="subir"><%=titulo%></label>
+    <input id="subearchivo<%=elemento%>" type="file" name="file" style="display:none;" onchange="mostrararchivo(<%=elemento%>)">
+    <div id="info<%=elemento%>"></div>
+    <input type="submit" value="Cargar">
+</form>
+<script>
+    function mostrararchivo(el){
+        var nomarchivo = document.getElementById(`subearchivo${el}`).files[0].name
+        document.getElementById(`info${el}`).innerHTML = nomarchivo
+    }
+</script>

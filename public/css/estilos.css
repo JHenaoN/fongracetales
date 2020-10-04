@@ -43,3 +43,14 @@
     color: #fff;
     background: #f7cb15;
   }
+
+  table thead {order:1;}
+  table tbody {order:2;}  
+  table tfoot {order:3;}
+  
+  table th {
+    text-align: center;
+  }
+  /* table td {
+    width: 25%;
+  } */

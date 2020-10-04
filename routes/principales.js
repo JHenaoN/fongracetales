@@ -5,9 +5,9 @@ const { ValidationError } = require('yup')
 const convertir = require('./convertirajson')
 const fetch = require('node-fetch')
 const { response } = require('express')
-const fileUpload = require('express-fileupload')
+//const fileUpload = require('express-fileupload')
 
-rutas.use(fileUpload())
+//rutas.use(fileUpload())
 
 var pool = mysql.createPool({
     connectionLimit :20,
@@ -161,6 +161,42 @@ rutas.post('/procesar-registro-asociados',(pet,res)=>{
     })
   })
 
+//Muestra el ultimo saldo de ahorros
+ rutas.get('/listarahorros',(pet,res)=>{
+    pool.getConnection((err,conexion)=>{
+        const consulta = `SELECT * FROM saldos_ahorros WHERE cedula = ${conexion.escape(pet.session.usuario.cedula)}
+                          AND fecha_corte = (SELECT MAX(fecha_corte) FROM saldos_ahorros)`
+        conexion.query(consulta,(error,filas,campos)=>{
+          res.render('listarahorros_asociado',{saldoahorros: filas,usuario: pet.session.usuario,mensaje: pet.flash('mensaje')}) 
+        }) 
+        conexion.release()
+    })
+    
+ })
+
+ //Muestra los ultimos saldos de creditos
+ rutas.get('/listarcreditos',(pet,res)=>{
+    pool.getConnection((err,conexion)=>{
+        const consulta = `SELECT * FROM saldo_prestamos WHERE cedula = ${conexion.escape(pet.session.usuario.cedula)}
+                          AND fecha_corte = (SELECT MAX(fecha_corte) FROM saldo_prestamos)`
+        conexion.query(consulta,(error,filas,campos)=>{
+          res.render('listarcreditos_asociado',{saldocreditos: filas,usuario: pet.session.usuario,mensaje: pet.flash('mensaje')}) 
+        }) 
+        conexion.release()
+    })
+
+ //Listar los descuentos enviados   
+ rutas.get('listardctoenviado',(pet,res)=>{
+
+ })
+//Listar los descuentos aplicados   
+ rutas.get('listardctoaplicado',(pet,res)=>{
+     
+ })
+    
+})
+
+
 // A P I S
 
 //Insercion multiple de registros en una tabla 
@@ -227,7 +263,7 @@ rutas.post('/api/saldosahorros/',(pet,res)=>{
     pool.getConnection((err,conexion)=>{
         const datos = pet.body
         const consulta = 'INSERT INTO saldos_ahorros (cedula,fecha_corte,concepto,numero,valor_cuota,saldo) values ?'
-        // console.log(datos)
+        //console.log(datos)
         conexion.query(consulta,[datos.map(x => [x.cedula, x.fecha_corte,x.concepto,x.numero,x.valor_cuota,x.saldo])],(error,filas,campos)=>{
             if (!error){
                     res.status(201)
@@ -245,9 +281,9 @@ rutas.post('/api/saldosahorros/',(pet,res)=>{
 rutas.post('/api/saldosprestamos/',(pet,res)=>{
     pool.getConnection((err,conexion)=>{
         const datos = pet.body
-        const consulta = 'INSERT INTO saldo_prestamos (cedula,fecha_corte,concepto,numero,valor_cuota,valor_inicial,saldo_capital,saldo_interes,numero_cuotas) values ?'
+        const consulta = 'INSERT INTO saldo_prestamos (cedula,fecha_corte,concepto,numero,fecha_credito,valor_cuota,valor_inicial,saldo_capital,saldo_interes,numero_cuotas) values ?'
         // console.log(datos)
-        conexion.query(consulta,[datos.map(x => [x.cedula,x.fecha_corte,x.concepto,x.numero,x.valor_cuota,x.valor_inicial,x.saldo_capital,x.saldo_interes,x.numero_cuotas])],(error,filas,campos)=>{
+        conexion.query(consulta,[datos.map(x => [x.cedula,x.fecha_corte,x.clase,x.numero,x.fecha,x.vrcuota,x.vrprestamo,x.saldocapital,x.saldointeres,x.nocuotas])],(error,filas,campos)=>{
             if (!error){
                     res.status(201)
                     res.json({data:filas})

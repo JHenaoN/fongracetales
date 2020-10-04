@@ -1,4 +1,4 @@
-    <%- include ('./partials/encabezado3') %>
+    <%- include ('./partials/encabezado2') %>
     <div class="seccion">
         <div class="container">
             <div class="row">
@@ -13,39 +13,43 @@
                    <ul>
                     <li><a href="/registro-admon"> Registro Manual de Administradores  </a></li>   
                     <li><a href="/registro"> Registro Manual de Asociados  </a></li> 
-                    <li><a href="#" onclick="mostrar(1)"> Registro Masivo de Administradores  </a></li>
-                        <%- include ('./partials/eligearchivoadmon') %>
+                    <li><a href="#" onclick="mostrar(1) "> Registro Masivo de Administradores  </a></li>
+                        <% var datos1 = {titulo:'Seleccione archivo para Administradores', elemento:1} %>
+                        <%- include('./partials/eligearchivo',datos1) %>
                     </li> 
                     <li><a href="#" onclick="mostrar(2)"> Registro Masivo de Asociados  </a></li>
-                        <%- include ('./partials/eligearchivoasociados') %>
+                        <% var datos2 = {titulo:'Seleccione archivo para Asociados', elemento:2} %>
+                        <%- include('./partials/eligearchivo',datos2) %>
                     </li>
                     <li><a href="#" onclick="mostrar(3)"> Registro Masivo de Saldos Ahorros  </a></li>
-                        <%- include ('./partials/eligearchivoasociados') %>
+                        <% var datos3 = {titulo:'Seleccione archivo para Saldos Ahorros', elemento:3} %>
+                        <%- include('./partials/eligearchivo',datos3) %>
                     </li>
                     <li><a href="#" onclick="mostrar(4)"> Registro Masivo de Saldos Creditos </a></li>
-                        <%- include ('./partials/eligearchivoasociados') %>
+                        <% var datos4 = {titulo:'Seleccione archivo para Saldos Creditos', elemento:4} %>
+                        <%- include('./partials/eligearchivo',datos4) %>
                     </li>
                     <li><a href="#" onclick="mostrar(5)"> Registro Masivo de Descuentos Enviados  </a></li>
-                        <%- include ('./partials/eligearchivoasociados') %>
+                        <% var datos5 = {titulo:'Seleccione archivo para Descuentos Enviados', elemento:5} %>
+                        <%- include('./partials/eligearchivo',datos5) %>
                     </li>
                     <li><a href="#" onclick="mostrar(6)"> Registro Masivo de Descuentos Aplicados  </a></li>
-                        <%- include ('./partials/eligearchivoasociados') %>
+                        <% var datos6 = {titulo:'Seleccione archivo para Descuentos Aplicados', elemento:6} %>
+                        <%- include('./partials/eligearchivo',datos6) %>
                     </li>
                    </ul> 
-                   
-                   
+                </div>
+                <div class="colsm-7">
                     
-               </div>
-               <div class="colsm-7">
-                
-               </div>
+                </div>
            </div>
        </div>
     </div>
     
     <%- include ('./partials/pie') %>
+
     <script>
         function mostrar(item){
-            document.getElementById(`selarchivo${item}`).style.display = "block"
+           document.getElementById(`selarchivo${item}`).style.display = "block"
         }
     </script>

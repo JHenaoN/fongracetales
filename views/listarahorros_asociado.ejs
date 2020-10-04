@@ -1,0 +1,70 @@
+    <%- include ('./partials/encabezado_asociado') %>
+    <% var suma = 0 %>
+    <% var sumacuota = 0 %>
+    <div class="seccion">
+        <div class="container">
+            <div class="row">
+                <% if(mensaje.length > 0) {%>
+                    <h4>
+                        <span class='icon-info'></span>
+                        <%=mensaje%>
+                    </h4>
+                <% } %>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h2>Ahorros Asociado</h2>
+                </div>
+                <div class="col-sm">
+                    <h5 class="section dark">
+                        <span class="icon-calendar"></span>
+                        <strong>Fecha Corte:</strong>
+                        <%= saldoahorros[0].fecha_corte.getFullYear() %>/
+                        <%= saldoahorros[0].fecha_corte.getMonth()+1 %>/
+                        <%= saldoahorros[0].fecha_corte.getDate() %>
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card fluid">
+                        <table class="hoverable ">
+                            <!-- <caption>Asociados</caption>    -->
+                            <thead>
+                                <tr>
+                                    <th>Cedula</th>
+                                    <th>Concepto</th>
+                                    <th>Cuota</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% saldoahorros.map((x,ind) =>{  %> 
+                                    <tr>
+                                       <td data-label="Cedula"><%=x.cedula%></td>
+                                       <td data-label="Concepto"><%=x.concepto%></td>
+                                       <td data-label="Cuota" style="text-align: right;"><%=x.valor_cuota%></td>
+                                       <td data-label="Total" style="text-align: right;"><%=x.saldo%></td>
+                                    </tr>
+                                    <%suma = suma + x.saldo%>
+                                    <%sumacuota = sumacuota + x.valor_cuota%>
+                                    <% if (ind + 1 == saldoahorros.length){ %>
+                                            <tr>
+                                                <th scope="row" style="text-align: center;" >Total</td>
+                                                 <td>-</td>                                                   
+                                                <td style="text-align: right;"><%=sumacuota%></td>
+                                                <td style="text-align: right;"><%=suma%></td>
+                                            </tr>
+                                    <%}%>
+                                <% })  %>
+                            </tbody>
+                           
+                        </table> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include ('./partials/pie') %>
+
+    

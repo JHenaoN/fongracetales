@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `fongracetales`.`descuentos_aplicados` (
   `valor_interes` DECIMAL(10) NOT NULL,
   `valor_seguro` DECIMAL(10) NULL,
   `valor_total` DECIMAL(10) NOT NULL,
-  PRIMARY KEY (`id`, `cedula`, `concepto`),
+  PRIMARY KEY (`id`, `cedula`, `concepto`, `numero`),
   INDEX `fk_descuentos_aplicados_asociados_idx` (`cedula` ASC) VISIBLE,
   CONSTRAINT `fk_descuentos_aplicados_asociados`
     FOREIGN KEY (`cedula`)
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `fongracetales`.`descuentos_enviados` (
   `valor_interes` DECIMAL(10) NOT NULL,
   `valor_seguro` DECIMAL(10) NULL,
   `valor_total` DECIMAL(10) NOT NULL,
-  PRIMARY KEY (`id`, `cedula`, `concepto`),
+  PRIMARY KEY (`id`, `cedula`, `concepto`, `numero`),
   INDEX `fk_descuentos_enviados_asociados1_idx` (`cedula` ASC) VISIBLE,
   CONSTRAINT `fk_descuentos_enviados_asociados1`
     FOREIGN KEY (`cedula`)
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `fongracetales`.`saldos_ahorros` (
   `concepto` VARCHAR(60) NOT NULL,
   `numero` INT NOT NULL,
   `valor_cuota` DECIMAL(10) NOT NULL,
-  `saldo` VARCHAR(10) NOT NULL,
+  `saldo` DECIMAL(10) NOT NULL,
   PRIMARY KEY (`cedula`, `fecha_corte`, `concepto`),
   INDEX `fk_saldos_ahorros_asociados1_idx` (`cedula` ASC) VISIBLE,
   CONSTRAINT `fk_saldos_ahorros_asociados1`
@@ -109,13 +109,14 @@ CREATE TABLE IF NOT EXISTS `fongracetales`.`saldo_prestamos` (
   `cedula` INT(10) NOT NULL,
   `fecha_corte` DATE NOT NULL,
   `concepto` VARCHAR(60) NOT NULL,
-  `numero` VARCHAR(45) NULL,
+  `numero` INT NOT NULL,
+  `fecha_credito` DATE NULL,
   `valor_cuota` DECIMAL(10) NULL,
   `valor_inicial` DECIMAL(10) NULL,
   `saldo_capital` DECIMAL(10) NULL,
   `saldo_interes` DECIMAL(10) NULL,
   `numero_cuotas` INT NULL,
-  PRIMARY KEY (`cedula`, `fecha_corte`, `concepto`),
+  PRIMARY KEY (`cedula`, `fecha_corte`, `concepto`, `numero`),
   INDEX `fk_saldo_prestamos_asociados1_idx` (`cedula` ASC) VISIBLE,
   CONSTRAINT `fk_saldo_prestamos_asociados1`
     FOREIGN KEY (`cedula`)
