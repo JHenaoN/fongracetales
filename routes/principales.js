@@ -161,6 +161,23 @@ rutas.post('/procesar-registro-asociados',(pet,res)=>{
     })
   })
 
+  rutas.post('/Actualizar/:id',(pet,res)=>{
+      var cedula = pet.params.id
+      pool.getConnection((err,conexion)=>{
+        const consulta = `DELETE  FROM asociados WHERE cedula = ${conexion.escape(cedula)}`
+        conexion.query(consulta,(error,filas,campos)=>{
+          if (!error){
+              pet.flash('mensaje',`Asociado con la cedula ${cedula} fue eliminado`)
+              res.redirect('/registro')
+          }
+        })
+        conexion.release()
+    })
+  })
+
+
+
+
 //Muestra el ultimo saldo de ahorros
  rutas.get('/listarahorros',(pet,res)=>{
     pool.getConnection((err,conexion)=>{
@@ -323,13 +340,13 @@ rutas.post('/seleccionaarchivo/:id',(pet,resp)=>{
         case '1':  //Subir achivo administradores
           url = 'http://localhost:8080/api/administradores'
         break
-        case '2':
+        case '2':  //Subir Masivo de Asociados
            url = 'http://localhost:8080/api/asociados'
         break
-        case '3':
+        case '3':  //Subir Masivo Saldos Ahorros
            url = 'http://localhost:8080/api/saldosahorros'
         break
-        case '4':
+        case '4':  //ubir Masivo Saldos Creditos
            url = 'http://localhost:8080/api/saldosprestamos'
         break
     }

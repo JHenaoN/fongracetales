@@ -28,6 +28,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card fluid">
+                      <font size="1" face="Courier New" >
                         <table class="hoverable ">
                             <!-- <caption>Asociados</caption>    -->
                             <thead>
@@ -43,8 +44,8 @@
                                     <tr>
                                        <td data-label="Cedula"><%=x.cedula%></td>
                                        <td data-label="Concepto"><%=x.concepto%></td>
-                                       <td data-label="Cuota" style="text-align: right;"><%=x.valor_cuota%></td>
-                                       <td data-label="Total" style="text-align: right;"><%=x.saldo%></td>
+                                       <td data-label="Cuota" style="text-align: right;"><%=Intl.NumberFormat().format(x.valor_cuota)%></td> 
+                                       <td data-label="Total" style="text-align: right;"><%=Intl.NumberFormat().format(x.saldo)%></td>
                                     </tr>
                                     <%suma = suma + x.saldo%>
                                     <%sumacuota = sumacuota + x.valor_cuota%>
@@ -52,14 +53,15 @@
                                             <tr>
                                                 <th scope="row" style="text-align: center;" >Total</td>
                                                  <td>-</td>                                                   
-                                                <td style="text-align: right;"><%=sumacuota%></td>
-                                                <td style="text-align: right;"><%=suma%></td>
+                                                <td style="text-align: right;"><%=Intl.NumberFormat().format(sumacuota)%></td>
+                                                <td style="text-align: right;"><%=Intl.NumberFormat().format(suma)%></td>
                                             </tr>
                                     <%}%>
                                 <% })  %>
                             </tbody>
                            
                         </table> 
+                      </font>
                     </div>
                 </div>
             </div>

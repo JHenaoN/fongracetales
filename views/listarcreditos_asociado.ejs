@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card fluid">
-                        <table class="hoverable scrollable">
+                         <table class="hoverable scrollable">
                             <!-- <caption>Asociados</caption>    -->
                             <thead>
                                 <tr>
@@ -51,8 +51,8 @@
                                            <%= x.fecha_credito.getMonth()+1 %>/
                                            <%= x.fecha_credito.getDate() %>
                                        </td>
-                                       <td data-label="Cuota" style="text-align: right;"><%=x.valor_inicial%></td>
-                                       <td data-label="Total" style="text-align: right;"><%=x.saldo_capital%></td>
+                                       <td data-label="Cuota" style="text-align: right;"><%=Intl.NumberFormat().format(x.valor_inicial)%></td>
+                                       <td data-label="Total" style="text-align: right;"><%=Intl.NumberFormat().format(x.saldo_capital)%></td>
                                        <td data-label="Total" style="text-align: center;"><%=x.numero_cuotas%></td>
                                     </tr>
                                     <%suma = suma + x.saldo_capital%>
@@ -63,14 +63,14 @@
                                                  <td>-</td>                                                   
                                                  <td>-</td>
                                                  <td>-</td>
-                                                <td style="text-align: right;"><%=suma%></td>
+                                                <td style="text-align: right;"><%=Intl.NumberFormat().format(suma)%></td>
                                                 <td style="text-align: center;">-</td>
                                             </tr>
                                     <%}%>
                                 <% })  %>
                                </tbody>
-                           </table> 
-                       </div>
+                         </table> 
+                        </div>
                 
                     </div>
                 </div>

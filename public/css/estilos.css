@@ -51,6 +51,9 @@
   table th {
     text-align: center;
   }
-  /* table td {
-    width: 25%;
-  } */
+  table td {
+    font-size: 12px;
+    /* padding: 1px; */
+    vertical-align: middle;
+    /* height: 30px; */
+  } 

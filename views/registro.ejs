@@ -62,13 +62,13 @@
                            <tbody>
                             <% asociados.map(socios =>{  %> 
                                 <tr>
-                                   <td data-label="Cedula"><%=socios.cedula%></td>
-                                   <td data-label="Nombres"><%=socios.nombres%></td>
-                                   <td data-label="Apellidos"><%=socios.apellidos%></td>
-                                   <td data-label="Estado"><%=socios.estado%></td>
-                                   <td data-label="Email"><%=socios.email%></td>
-                                   <td><a href="/Eliminar" class="button">Eliminar</a></td>
-                               </tr>
+                                   <td data-label="Cedula" style="text-align: center;"><%=socios.cedula%></td>
+                                   <td data-label="Nombres" style="text-align: left;"><%=socios.nombres%></td>
+                                   <td data-label="Apellidos" style="text-align: left;"><%=socios.apellidos%></td>
+                                   <td data-label="Estado" style="text-align: center;"><%=socios.estado%></td>
+                                   <td data-label="Email" style="text-align: left;"><%=socios.email%></td>
+                                   <td style="text-align: center"><a href='/Actualizar/<%=socios.cedula%>'>Actualizar</a></td>
+                                </tr>
                             <% })  %>
                            </tbody>
                        </table> 
